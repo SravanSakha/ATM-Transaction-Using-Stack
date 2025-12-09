@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ATM Transaction History</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="atm-wrap">
+  <div class="panel">
+    <div class="atm-header">
+      <div class="logo">ATM</div>
+      <div>
+        <div class="title">ATM Transaction Stack</div>
+        <div class="subtitle">LIFO Recent Transactions</div>
+      </div>
+    </div>
+
+    <div class="balance-box">
+      <div>
+        <div class="balance-label">Available Balance</div>
+        <div id="balanceDisplay" class="balance-amt">₹0.00</div>
+      </div>
+      <div class="muted" style="text-align:right">
+        <div style="font-size:12px">Account</div>
+        <div style="font-size:12px">Demo</div>
+      </div>
+    </div>
+
+    <div>
+      <label for="txType">Transaction Type</label>
+      <select id="txType">
+        <option value="withdraw">Withdrawal</option>
+        <option value="deposit">Deposit</option>
+        <option value="balance">Balance Enquiry</option>
+        <option value="transfer">Fund Transfer</option>
+        <option value="pin">PIN Change</option>
+      </select>
+    </div>
+
+    <div id="amountBlock">
+      <label for="amount">Amount (₹)</label>
+      <input id="amount" type="number" min="0" placeholder="Enter amount" />
+    </div>
+
+    <div class="controls-row">
+      <button id="addBtn">Add Transaction</button>
+      <button id="undoBtn" class="ghost small">Undo Last</button>
+      <button id="clearBtn" class="ghost small">Clear</button>
+    </div>
+
+    <div class="controls-row">
+      <button id="saveBtn" class="small ghost">Save</button>
+      <button id="loadBtn" class="small ghost">Load</button>
+
+      <div class="count-box">
+        <label class="muted">Show</label>
+        <input id="showCount" type="number" min="1" max="50" value="5" />
+        <button id="showBtn" class="small ghost">Mini-statement</button>
+      </div>
+    </div>
+
+    <div class="note muted">Use Undo to pop the last transaction.</div>
+    <div class="muted" style="text-align:center; margin-top:auto;">Balance starts at ₹0.</div>
+  </div>
+
+  <div class="history-panel">
+    <div class="history-header">
+      <div>
+        <div class="head">Transaction History</div>
+        <div class="muted">Recent transactions on top</div>
+      </div>
+      <div class="muted" id="countLabel">0 transactions</div>
+    </div>
+
+    <div class="history-list" id="historyList"></div>
+
+    <div class="footer">
+      <div class="muted">Timestamped • Auto-ID</div>
+      <div class="footer-btns">
+        <button id="exportBtn" class="ghost small">Export JSON</button>
+        <button id="importBtn" class="ghost small">Import JSON</button>
+        <input id="fileInput" type="file" accept="application/json" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
